@@ -1,0 +1,11 @@
+# Compiled test executables
+test_runner
+*.out
+*.exe
+
+# Test results
+test_results.txt
+
+# Temporary files
+*.tmp
+*.log

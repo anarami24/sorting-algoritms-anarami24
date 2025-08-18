@@ -1,0 +1,66 @@
+name: GitHub Classroom Workflow
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Autograding
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # Limit execution time to save budget
+    
+    steps:
+    - name: Checkout student code
+      uses: actions/checkout@v3
+      with:
+        path: student-code
+
+    - name: Checkout test suite
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ secrets.TEST_REPO }}  # Instructor's private test repository
+        token: ${{ secrets.TEST_REPO_TOKEN }}
+        path: test-suite
+        
+    - name: Setup C++ environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++ make
+        
+    - name: Build student code
+      run: |
+        cd student-code
+        make clean
+        make all
+        
+    - name: Run minimal test suite
+      id: test
+      run: |
+        cd test-suite
+        chmod +x run_tests.sh
+        ./run_tests.sh ../student-code
+        
+    - name: Generate test report
+      if: always()
+      run: |
+        echo "## Test Results" >> $GITHUB_STEP_SUMMARY
+        if [ -f test-suite/test_results.txt ]; then
+          cat test-suite/test_results.txt >> $GITHUB_STEP_SUMMARY
+        fi
+        
+    - name: Upload results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: test-suite/test_results.txt
+        retention-days: 30
+        
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      if: always()
+      with:
+        runners: test
