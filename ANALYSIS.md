@@ -66,21 +66,21 @@ Run your implemented algorithms on different input sizes and record the executio
 | Algorithm | n=10 | n=100 | n=1000 | n=10000 |
 |-----------|------|-------|--------|---------|
 | Bubble Sort | 1.000 microseconds | 12.000 microseconds| 741.000 microseconds |  67.964 ms |
-| Selection Sort | | | | |
-| Insertion Sort | | | | |
-| Merge Sort | | | | |
-| Quick Sort | | | | |
+| Selection Sort | 1.000 microseconds | 19.000 microseconds | 1.615 ms | 177.611 ms |
+| Insertion Sort | 1.000 microseconds |  1.000 microseconds | 2.000 microseconds | 20.000 microseconds |
+| Merge Sort | 2.000 microseconds | 6.000 microseconds | 55.000 microseconds | 373.000 microseconds |
+| Quick Sort | 2.000 microseconds | 9.000 microseconds | 500.000 microseconds | 36.345 ms |
 | Heap Sort | | | | |
 
 ### Reverse Sorted Data
 
 | Algorithm | n=10 | n=100 | n=1000 | n=10000 |
 |-----------|------|-------|--------|---------|
-| Bubble Sort | | | | |
-| Selection Sort | | | | |
-| Insertion Sort | | | | |
-| Merge Sort | | | | |
-| Quick Sort | | | | |
+| Bubble Sort | 1.000 microseconds | 53.000 microseconds | 49.000 microseconds | 512.910 ms |
+| Selection Sort | 1.000 microseconds | 17.000 microseconds |  1.549 ms | 195.416 ms |
+| Insertion Sort | 1.000 microseconds | 22.000 microseconds | 277.000 microseconds | 22.812 ms |
+| Merge Sort | 2.000 microseconds | 6.000 microseconds | 54.000 microseconds |  445.000 microseconds |
+| Quick Sort | 1.000 microseconds | 13.000 microseconds | 372.000 microseconds | 30.547 ms |
 | Heap Sort | | | | |
 
 ## Algorithm Comparison and Use Cases
@@ -88,24 +88,24 @@ Run your implemented algorithms on different input sizes and record the executio
 ### When to Use Each Algorithm
 
 #### Bubble Sort
-- **Best for:** [Your answer]
-- **Avoid when:** [Your answer]
+- **Best for:** Small arrays where the simplicity of the algorithm matters more than the efficiency of it.
+- **Avoid when:** Bigger arrays since it's a slow algorithm.
 
 #### Selection Sort
-- **Best for:** [Your answer]
-- **Avoid when:** [Your answer]
+- **Best for:** Situations where the number of swaps must be minimal.
+- **Avoid when:** When we need to sort big arrays and we need quick results.
 
 #### Insertion Sort
-- **Best for:** [Your answer]
-- **Avoid when:** [Your answer]
+- **Best for:** Small arrays or ones that are almost sorted.
+- **Avoid when:** When we have big arrays or ones that are very unsorted.
 
 #### Merge Sort
-- **Best for:** [Your answer]
-- **Avoid when:** [Your answer]
+- **Best for:** Big arrays where we need stability (for example: a data base)
+- **Avoid when:** There are memory restrictons because it requires auxilary arrays.
 
 #### Quick Sort
-- **Best for:** [Your answer]
-- **Avoid when:** [Your answer]
+- **Best for:** When we have a considerable amout of data in the memory.
+- **Avoid when:** The array is alredy sorted and we choose a bad pivot.
 
 #### Heap Sort
 - **Best for:** [Your answer]
@@ -115,7 +115,7 @@ Run your implemented algorithms on different input sizes and record the executio
 
 Which algorithms are stable and which are not? Explain what stability means and why it matters.
 
-[Your answer here]
+Stability in algorithms can be seen as how an algorithm treats elements that are deem equal, which means that the algorithm preserves the relative order of elements that are equal. 
 
 ## Observations and Conclusions
 
